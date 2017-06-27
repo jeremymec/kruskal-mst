@@ -29,17 +29,24 @@ public class Main {
 
     public static void kruskal(Graph g){
 
+        // The minimum spanning tree that is the result of our algorithm
         ArrayList<Edge> mst = new ArrayList<>();
 
+        // Sorts the edges from smallest to largest
         ArrayList<Edge> edges = g.getEdges();
         Collections.sort(edges);
 
+        // Creates a new Disjoint Set helper class, passing it all the nodes in the graph
         DisjointSet ds = new DisjointSet(g.nodes);
 
+        // Iterates through the edges (still in order)
         for (Edge e : edges){
+
+            // For each edges, get the two nodes
             Node n1 = e.n1;
             Node n2 = e.n2;
 
+            // If the two nodes are NOT in the same disjoint set, merge the two and add the current edge to MST
             if (!(ds.find(n1).equals(ds.find(n2)))){
                 mst.add(e);
                 ds.union(n1, n2);
