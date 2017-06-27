@@ -23,15 +23,28 @@ public class Main {
         g.createEdge(5, g.getNode('f'), g.getNode('b'));
         g.createEdge(2, g.getNode('a'), g.getNode('f'));
 
+        kruskal(g);
+
     }
 
-    public void kruskal(Graph g){
+    public static void kruskal(Graph g){
 
         ArrayList<Edge> mst = new ArrayList<>();
 
         ArrayList<Edge> edges = g.getEdges();
         Collections.sort(edges);
 
+        DisjointSet ds = new DisjointSet(g.nodes);
+
+        for (Edge e : edges){
+            Node n1 = e.n1;
+            Node n2 = e.n2;
+
+            if (!(ds.find(n1).equals(ds.find(n2)))){
+                mst.add(e);
+                ds.union(n1, n2);
+            }
+        }
 
     }
 }

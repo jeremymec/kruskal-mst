@@ -57,6 +57,7 @@ class Edge implements Comparable<Edge>{
 class Node {
 
     char value;
+    Node parent;
 
     Node(char value){
         this.value = value;

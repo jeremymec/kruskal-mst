@@ -3,26 +3,27 @@ import java.util.HashMap;
 
 public class DisjointSet {
 
-    HashMap<Node,  Node> parent;
+    ArrayList<Node> nodes;
 
     public DisjointSet(ArrayList<Node> nodes){
-        parent = new HashMap<Node, Node>();
+        this.nodes = nodes;
 
         for (Node n: nodes){
-            parent.put(n, n);
+            n.parent = n;
         }
 
     }
 
     public Node find(Node n){
-        if (parent.get(n) == n){
+        if (n.parent == n){
             return n;
         }
-        return find(parent.get(n));
+        return find(n.parent);
     }
 
     public void union(Node n1, Node n2){
-        parent.put(n1, n2);
+        n1.parent = n2;
+        nodes.remove(n1);
     }
 
 }
