@@ -32,6 +32,6 @@ public class Main {
         ArrayList<Edge> edges = g.getEdges();
         Collections.sort(edges);
 
-        
+
     }
 }
