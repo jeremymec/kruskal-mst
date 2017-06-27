@@ -36,7 +36,7 @@ public class Graph {
 
 }
 
-class Edge {
+class Edge implements Comparable<Edge>{
 
     int weight;
     Node n1;
@@ -48,6 +48,10 @@ class Edge {
         this.n2 = n2;
     }
 
+    @Override
+    public int compareTo(Edge e) {
+        return this.weight - e.weight;
+    }
 }
 
 class Node {
